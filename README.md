@@ -1,4 +1,20 @@
 # productManagement
+
+ - Task implemented with using of Sqlite, so be sure it is installed on your system.
+
+1. first run migrations to create db and tables, (dotnet ef database update).
+
+// TODO list
+ - add jwt authorization/authentication
+ - create users table and use it for users
+ - create request/response models(DTOs(using Facade pattern)) to not show clients all fields from db but we need, to show corresponding messages instead of exceptions etc...
+ - add service (additional abstraction layer) to not have any business logic in controller's actions
+ - write unit tests
+
+
+
+
+
 Implement an API project built in .NET (prefer .NET Core) to manage products with the typical CRUD methods to create, update and remove products* into a database.
 
 Using the API, one should be able to get these resources from it:

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using productManagement.Models;
+using productManagement.Entities;
 
 namespace productManagement.Authorize
 {

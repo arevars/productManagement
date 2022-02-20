@@ -1,7 +1,7 @@
 ﻿#nullable disable
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using productManagement.Authorize;
 using productManagement.Entities;
 using productManagement.Models;
 
@@ -44,7 +44,7 @@ namespace productManagement.Controllers
 
         // PUT: api/Products/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        
+
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProduct(int id, Product product)
         {
@@ -76,18 +76,26 @@ namespace productManagement.Controllers
 
         // POST: api/Products
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        
+
         [HttpPost]
         public async Task<ActionResult<Product>> PostProduct(Product product)
         {
-            _context.Products.Add(product);
-            await _context.SaveChangesAsync();
-
+            try
+            {
+                _context.Products.Add(product);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception E)
+            {
+                throw;
+                //return CreatedAtAction(nameof(GetProduct), new JsonResult(new { message = E.Message }) { StatusCode = StatusCodes.Status400BadRequest });
+            }
             return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);
+
         }
 
         // DELETE: api/Products/5
-        
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(int id)
         {

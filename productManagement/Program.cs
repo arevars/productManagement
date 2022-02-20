@@ -1,9 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using productManagement.Authorize;
 using productManagement.Models;
 using productManagement.Services;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +16,6 @@ builder.Services.AddDbContext<ProductsManagementContext>(opt =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUserService, UserService>();
-
 
 var app = builder.Build();
 
